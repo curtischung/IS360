@@ -10,6 +10,11 @@
     font-family: Monospace, "courier new";
     background-color: #f1f1f1;
     }
+
+    h4 {
+        font-weight: normal;
+    }
+
 </style>
 
 <body>
@@ -36,7 +41,7 @@
     <hr>
 
     <article>
-        <h1>Reference Manual: <code>&lt;a&gt tag</code></h1>
+        <h1>Reference Manual: <code>&lt;a&gt</code> Tag</h1>
         <section id = "Abstract">
             <h2>Abstract</h2>
             <p>
@@ -44,13 +49,28 @@
             outside of the website. The hyperlinks created can link to pictures, other pages on
             the websites, or other files, such as pictures, that exist on the website. They have
             plenty of other attributes with the <code>&lt;a&gt tag</code> such as bookmarking, media,
-            pings, etc, but the main usage is for hyperlinks.
+            pings, etc, but the main usage is for hyperlinks. 
             </p>
         </section>
         <section id = "Details">
             <h2>Details</h2>
+            <h4><code>href</code></h4>
+            <ul>
+                <li>Specifies a hyperlink's destination</dli>
+                <li>If href was not present in anchor tag, it will not become a hyperlink</li>
+                <li>Can point to:</li>
+                <ul>
+                    <li>An absolute URL</li>
+                    <li>A relative URL</li>
+                    <li>A specified ID in the website</li>
+                    <li>A script</li>
+                    <li>Other Protocols(https://, file, etc.)</li>
+                </ul>
+            </ul>
+                
+
         </section>
-        <section id = "Examplesz">
+        <section id = "Examples">
             <h2>Examples</h2>
         </section>
     </article>
