@@ -4,13 +4,44 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Table2</title>
+
+    <style>
+        .blueHeader {
+            color: blue;
+            padding: .001px;
+            margin: .001px;
+        }
+        table {
+            font-family:'Courier New', Courier, monospace;
+            border: 1px solid black;
+        }
+        #degree {
+            font-size: 50px;
+            margin: 0px;
+            padding: 0px;
+        }
+
+        img {
+            width: 100px;
+            height: 100px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .high {
+            color: red;
+        }
+        .low {
+            color: #0099ff;
+        }
+    </style>
 </head>
 
 
 <body>
     <hr>
-        <nav>
-            <table>
+    <nav aria-label = "Pages">
+        <table>
             <caption>Pages</caption>
             <tr>
                 <td>
@@ -26,9 +57,98 @@
                     <a href="Table2.html">Table 2</a>
                 </td>
             </tr>
-            </table>
-        </nav>
-    <hr>
+        </table>
+    </nav>
+
+    <table id = "Info" style = "width: 100%" >
+        <tr style = "background-color: #f1f1f1;">
+            <td colspan = "3">
+                <p><strong>Current conditions at</strong></p>
+                <h2 class = "blueHeader">UNR CAMPUS (UNRC)</h2>
+                <p><strong>Lat: </strong> 39.53916&#176;N &emsp;Lon: 119.80583&#176;W &emsp; Elev: 4480ft</p>
+            </td>
+        </tr>
+        
+        <tr>
+            <td>
+                <h2>NA</h2>
+                <h1 id = "degree">57&#176;F</h1>
+                <h4>14&#176;C</h4>
+            </td>
+            <td>
+                <p><strong>Humidity</strong>: 52%</p>
+                <p><strong>Wind Speed</strong>: NE 2 G 4 MPH</p>
+                <p><strong>Barometer</strong>: NA</p>
+                <p><strong>Dewpoint</strong>: 40&#176;F(4&#176;C)</p>
+                <p><strong>Visibility</strong>: NA</p>
+                <p><strong>Last Update</strong>: 24 Sep 9:10 am PDT</p>
+            </td>
+            <td>
+                <p><strong>More Information:</strong></p>
+                <p><a href = "#null">Local Forecast Office</a></p>
+                <p><a href = "#null">More Local Wx</a></p>
+                <p><a href = "#null">3 Day History</a></p>
+                <p><a href = "#null">Mobile Weather</a></p>
+                <p><a href = "#null">Hourly Weather Forecast</a></p>
+            </td>
+        </tr>
+    </table>
+    <br>
+    <table id = "Forecast" style = "width: 100%">
+        <tr style = "background-color: #f1f1f1;">
+            <td colspan = "9">
+                <p><strong>Extended Forecast for</strong></p>
+                <h2 class = "blueHeader">Reno NV</h2>
+            </td>
+        </tr>
+        <tr style = "text-align: center;">
+            <td><strong>Today</strong></td>
+            <td><strong>Tonight</strong></td>
+            <td><strong>Sunday</strong></td>
+            <td><strong>Sunday Night</strong></td>
+            <td><strong>Monday</strong></td>
+            <td><strong>Monday Night</strong></td>
+            <td><strong>Tuesday</strong></td>
+            <td><strong>Tuesday Night</strong></td>
+            <td><strong>Wednesday</strong></td>
+        </tr>
+        <tr style = "align-items: center;">
+            <td><img src = "images/sunny.jpg" alt = "sunny"></td>
+            <td><img src = "images/moon.png" alt = "clear"></td>
+            <td><img src = "images/sunny.jpg" alt = "sunny"></td>
+            <td><img src = "images/moon.png" alt = "clear"></td>
+            <td><img src = "images/sunny.jpg" alt = "sunny"></td>
+            <td><img src = "images/moon.png" alt = "clear"></td>
+            <td><img src = "images/sunny.jpg" alt = "sunny"></td>
+            <td><img src = "images/moon.png" alt = "clear"></td>
+            <td><img src = "images/sunny.jpg" alt = "sunny"></td>
+        </tr>
+
+        <tr style = "text-align: center;">
+            <td>Sunny</td>
+            <td>Clear</td>
+            <td>Sunny</td>
+            <td>Clear</td>
+            <td>Sunny</td>
+            <td>Clear</td>
+            <td>Sunny</td>
+            <td>Clear</td>
+            <td>Sunny</td>
+        </tr>
+
+        <tr style = "text-align: center;">
+            <td class = "high">High: 74 &#176;F</td>
+            <td class = "low">Low: 46 &#176;F</td>
+            <td class = "high">High: 74 &#176;F</td>
+            <td class = "low">Low: 46 &#176;F</td>
+            <td class = "high">High: 74 &#176;F</td>
+            <td class = "low">Low: 46 &#176;F</td>
+            <td class = "high">High: 74 &#176;F</td>
+            <td class = "low">Low: 46 &#176;F</td>
+            <td class = "high">High: 74 &#176;F</td>
+        </tr>
+
+    </table>
 </body>
 
 </html>

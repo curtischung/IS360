@@ -4,22 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reference Manual</title>
+
+    <style>
+        code {
+        font-family: Monospace, "courier new";
+        background-color: #f1f1f1;
+        font-size: 14px;
+        display: inline-block;
+        margin: 2px;
+        padding: 2px;
+        }
+    
+        h4 {
+            font-weight: normal;
+        }
+    
+    </style>
 </head>
-<style>
-    code {
-    font-family: Monospace, "courier new";
-    background-color: #f1f1f1;
-    }
 
-    h4 {
-        font-weight: normal;
-    }
-
-</style>
 
 <body>
     <hr>
-        <nav>
+        <nav aria-label = "Pages">
             <table>
             <caption>Pages</caption>
             <tr>
@@ -39,16 +45,33 @@
             </table>
         </nav>
     <hr>
+        <nav aria-label = "Bookmarks">
+            <table>
+                <caption>Bookmarks</caption>
+                <tr>
+                    <td>
+                      <a href="#Abstract">Abstract</a>
+                    </td>
+                    <td>
+                      <a href="#Details">Details</a>
+                    </td>
+                    <td>
+                      <a href="#Examples">Examples</a>
+                    </td>
+                  </tr>
+            </table>
+        </nav>
+    <hr>
 
     <article>
-        <h1>Reference Manual: <code>&lt;a&gt</code> Tag</h1>
+        <h1>Reference Manual: <code style = "font-size: 20px">&lt;a&gt;</code> Tag</h1>
         <section id = "Abstract">
             <h2>Abstract</h2>
             <p>
             The anchor tag creates a hyperlink which can be used to link information from in and
             outside of the website. The hyperlinks created can link to pictures, other pages on
             the websites, or other files, such as pictures, that exist on the website. They have
-            plenty of other attributes with the <code>&lt;a&gt tag</code> such as bookmarking, media,
+            plenty of other attributes with the <code>&lt;a&gt; tag</code> such as bookmarking, media,
             pings, etc, but the main usage is for hyperlinks. 
             </p>
         </section>
@@ -56,22 +79,76 @@
             <h2>Details</h2>
             <h4><code>href</code></h4>
             <ul>
-                <li>Specifies a hyperlink's destination</dli>
+                <li>Specifies a hyperlink's destination</li>
                 <li>If href was not present in anchor tag, it will not become a hyperlink</li>
                 <li>Can point to:</li>
-                <ul>
-                    <li>An absolute URL</li>
-                    <li>A relative URL</li>
-                    <li>A specified ID in the website</li>
-                    <li>A script</li>
-                    <li>Other Protocols(https://, file, etc.)</li>
-                </ul>
+                <li>
+                    <ul>
+                        <li>An absolute <code>URL</code></li>
+                        <li>A relative <code>URL</code></li>
+                        <li>A specified ID in the website</li>
+                        <li>A script</li>
+                        <li>Other Protocols(https://, file, etc.)</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <h4><code>download</code></h4>
+            <ul>
+                <li>Specifies a hyperlink file</li>
+                <li>When a user clicks on hyperlink, <code>filename</code> will be downloaded</li>
+                <li>NO restrictions on file extensions</li>
+            </ul>
+
+            <h4><code>target</code></h4>
+            <ul>
+                <li>Tells how the hyperlink will open in the browser</li>
+                <li><code>_blank</code> opens in a new window/tab</li>
+                <li><code>_self</code> opens in the same frame</li>
+                <li><code>_parent</code> opens link in a parent frame</li>
+                <li><code>_top</code> opens link in a full body window</li>
+                <li><code><i>framename</i></code> opens the link in a frame specified by the writer</li>
+            </ul>
+
+            <h4><code>rel</code></h4>
+            <p><code>rel</code> specifies the relation between the current page/document to whatever is linked.</p>
+            <ul>
+                <li><code>alternate</code> gives an alternate version of the page</li>
+                <li>
+                    <ul>
+                        <li>For example: print pages, translated, or mirrored</li>
+                    </ul>
+                </li>
+                <li><code>author</code> gives the author of the document</li>
+                <li><code>bookmark</code> us straightforward, and used to bookmark URLs</li>
+                <li><code>external</code> links to a document that is not part of the same site</li>
+                <li><code>help</code> gives the user a help document</li>
+                <li><code>license</code> gives links to the licensing information for the document</li>
+                <li><code>next</code> gives a link to the next document in the listing of the documents</li>
+                <li><code>prev</code> gives a link to the previous documentin the listing</li>
+                <li><code>search</code> links to a search tool in the page</li>
+                <li><code>tag</code> gives a keyword for the document</li>
             </ul>
                 
 
         </section>
         <section id = "Examples">
             <h2>Examples</h2>
+            <em><a href = "https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstleyVEVO" title = "example absolute reference">https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstleyVEVO</a></em>
+            <ul>
+                <li>This is an example of an absolute reference to an external page</li>
+                <li>
+                    <p><code>&lt;a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstleyVEVO" 
+                        title="example absolute reference"&gt;https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstleyVEVO&lt;/a&gt;</code></p>
+                </li>
+            </ul>
+            <em><a href = "Table1.html" title= "Table 1 relative reference">Table 1</a></em>
+            <ul>
+                <li>This is an example of of a relative reference to an internal page</li>
+                <li>
+                    <p><code>&lt;a href = "Table1.html" title= "Table 1 relative reference">Table 1&lt;/a&gt;</code></p>
+                </li>
+            </ul>
         </section>
     </article>
 </body>
