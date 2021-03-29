@@ -1,18 +1,47 @@
 .menu {
     margin-left: auto;
     margin-right: auto;
+    border: 1px solid black;
+    width: 500px;
+    height: 50px;
+    text-align: center;
+    background-color: #0088ff;
+}
+
+.navbar td{
+    width:600px;
+    text-align: center;
+    box-shadow:#014988 0px 0px 0px 2px;
+    z-index:1;
+}
+.navbar a{
+    display: block;
+    padding: 10px; 
+}
+.navbar td:hover {
+    background-color: transparent;
+    color: gainsboro;
+}
+
+.container {
+    max-width: 1024 px;
+}
+
+.active-page {
+    background-color: #36baee;
+    z-index:2;
 }
 footer {
     text-align: center;
-    padding: 3px;
-    background-color: rgb(10, 108, 253);
+    padding: 15px;
+    background-color: #00325e;
     color: white;
 }
 
 footer img {
     float: left;
-    width: 130px;
-    height: 100px;
+    width: 85px;
+    height: 60px;
     text-align: left;
 }
 
@@ -76,4 +105,26 @@ h4 {
     color: rgb(40, 16, 175);
     padding-bottom: 10px;
     font-family: "Copperplate", fantasy;
+}
+
+/*CSSInfo Page CSS*/
+pre {
+    font-family: 'Courier New', Courier, monospace;
+    background-color: rgb(255, 244, 230);
+}
+
+strong {
+    color:#3a0b41
+}
+
+.note {
+    margin-left: 5px;
+    margin-right: 5px;
+    background-color: rgb(255, 244, 230);
+    border-left: 1px solid;
+}
+
+dl dt{
+    font-size: 19px;
+    font-weight: bold;
 }
