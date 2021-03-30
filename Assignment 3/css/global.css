@@ -1,3 +1,5 @@
+@import "colors.css";
+
 .menu {
     margin-left: auto;
     margin-right: auto;
@@ -5,13 +7,13 @@
     width: 500px;
     height: 50px;
     text-align: center;
-    background-color: #0088ff;
+    background-color: var(--sky-blue);
 }
 
 .navbar td{
     width:600px;
     text-align: center;
-    box-shadow:#014988 0px 0px 0px 2px;
+    box-shadow: var(--blue-shadow) 0px 0px 0px 2px;
     z-index:1;
 }
 .navbar a{
@@ -19,8 +21,7 @@
     padding: 10px; 
 }
 .navbar td:hover {
-    background-color: transparent;
-    color: gainsboro;
+    background-color: var(--bone-gray);
 }
 
 .container {
@@ -28,13 +29,13 @@
 }
 
 .active-page {
-    background-color: #36baee;
+    background-color: var(--sky-high);
     z-index:2;
 }
 footer {
     text-align: center;
     padding: 15px;
-    background-color: #00325e;
+    background-color: var(--deep-ocean);
     color: white;
 }
 
@@ -47,7 +48,7 @@ footer img {
 
 ul.breadcrumb {
     padding: 10px;
-    background-color: rgb(243, 243, 243);
+    background-color: var(--breadcrumb-white);
   }
 .breadcrumb li{
     display: inline;
@@ -60,7 +61,7 @@ ul.breadcrumb {
   }
 
 .breadcrumb li a:hover {
-    color: #00325e;
+    color: var(--deep-ocean);
     text-decoration: underline;
 }
 
@@ -70,7 +71,7 @@ h1::first-letter {
 h1 {
     font-size: 40px;
     text-transform: uppercase;
-    color: rgb(40, 16, 175);
+    color: var(--high-purple);
     padding-bottom: 10px;
     font-family: "Copperplate", fantasy;
     text-shadow: 1px 1px;
@@ -81,7 +82,7 @@ h2::first-letter {
 h2 {
     font-size: 25px;
     text-transform: uppercase;
-    color: rgb(40, 16, 175);
+    color: var(--high-purple);
     padding-bottom: 10px;
     font-family: "Copperplate", fantasy;
 }
@@ -91,7 +92,7 @@ h3::first-letter {
 h3 {
     font-size: 17px;
     text-transform: uppercase;
-    color: rgb(40, 16, 175);
+    color: var(--high-purple);
     padding-bottom: 10px;
     font-family: "Copperplate", fantasy;
 }
@@ -102,7 +103,7 @@ h4::first-letter {
 h4 {
     font-size: 10px;
     text-transform: uppercase;
-    color: rgb(40, 16, 175);
+    color: var(--high-purple);
     padding-bottom: 10px;
     font-family: "Copperplate", fantasy;
 }
@@ -110,17 +111,17 @@ h4 {
 /*CSSInfo Page CSS*/
 pre {
     font-family: 'Courier New', Courier, monospace;
-    background-color: rgb(255, 244, 230);
+    background-color: var(--bone-white);
 }
 
 strong {
-    color:#3a0b41
+    color:var(--deep-purple);
 }
 
 .note {
     margin-left: 5px;
     margin-right: 5px;
-    background-color: rgb(255, 244, 230);
+    background-color: var(--bone-white);
     border-left: 1px solid;
 }
 
