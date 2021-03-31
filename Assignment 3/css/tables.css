@@ -1,14 +1,17 @@
 @import "colors.css";
 
-table {
+table.graph{
     border: 1px solid;
     background-color: var(--bone-white);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    width: 1024px;
 }
 table th {
     border: 1px solid;    
 }
-tr:nth-child(1) {
-    background-color: white;
+table thead{
+    margin: 3px;
+    padding: 4px;
 }
 
 tr:nth-child(even) {
@@ -26,13 +29,13 @@ table tr td{
 }
 
 .bar-purple {
-    background-color: purple;
+    background-color: var(--purple-bar);
 }
 .bar-blue {
-    background-color: blue;
+    background-color: var(--blue-bar);
 }
 .bar-red {
-    background-color: red;
+    background-color: var(--red-bar);
 }
 
 

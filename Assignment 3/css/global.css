@@ -37,12 +37,13 @@ footer {
     padding: 15px;
     background-color: var(--deep-ocean);
     color: white;
+    font-size: 13px;
 }
 
 footer img {
     float: left;
-    width: 85px;
-    height: 60px;
+    width: 80px;
+    height: 57px;
     text-align: left;
 }
 
