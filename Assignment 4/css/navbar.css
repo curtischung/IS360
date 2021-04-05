@@ -1,0 +1,23 @@
+.menu {
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid black;
+    width: 500px;
+    height: 50px;
+    text-align: center;
+    background-color: rgb(97, 97, 255);
+}
+
+.navbar td{
+    width:600px;
+    text-align: center;
+    box-shadow: blueviolet 0px 0px 0px 2px;
+    z-index:1;
+}
+.navbar a{
+    display: block;
+    padding: 10px; 
+}
+.navbar td:hover {
+    background-color: grey;
+}
