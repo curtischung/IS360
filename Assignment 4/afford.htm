@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="css/footer.css">
     <link rel="stylesheet" href="css/affordpage.css">
     <title>Index</title>
+
 </head>
 
 
@@ -41,6 +42,37 @@
         <label for = "totalExpenses">Total Expenses</label>
         <input type = "number" id = "totalExpenses" name = "totalExpenses">
     </form>
+
+    <script>
+        function affordable(gm) {
+            var maxPayment = 0;
+            //const grossVal = document.getElementById("gmIncome").value;
+            //const expenseVal = document.getElementById("totalExpenses").value;
+            const grossVal = 10;
+            const expenseVal = 10;
+
+            const calcGrossVal = .29 * parseFloat(grossVal);
+            const calcExpenseVal = .39 * (parseFloat(grossVal) - parseFloat(expenseVal));
+
+            if(calcGrossVal > calcExpenseVal)
+            {
+                maxPayment= calcExpenseVal;
+            }
+            else
+            {
+                maxPayment= calcGrossVal;
+            }
+
+            document.getElementById("affordable") = maxPayment;
+
+        }
+    </script>
+    
+    <form>
+        <label for = "Affordable">Affordable</label>
+        <output type = "number" id = "affordable" name = "affordable" aria-readonly="true"></output>
+    </form>
+
 
     <footer>
         <img src = "images/Nevada_logo.png" alt = "">
