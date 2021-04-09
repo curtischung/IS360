@@ -6,6 +6,25 @@
     <link rel="stylesheet" href="css/navbar.css">
     <link rel="stylesheet" href="css/footer.css">
     <title>Index</title>
+
+    <script>
+        function calculatePayment() {
+            const loanVal = document.getElementById("loan").value;
+            const periodVal = document.getElementById("periods").value;
+            const annualInterestVal = document.getElementById("interest").value / 100;
+
+            const periods = periodVal * 12;
+            const ratePerPeriod = annualInterestVal / 12
+
+            var currentloan = parseFloat("loanVal");
+            let payment = (loanVal * ratePerPeriod) / (1 - Math.pow((1 + ratePerPeriod), (periods * -1)));
+
+            payment = payment.toFixed(2);
+
+            document.getElementById("payment").value = payment;
+        }
+
+    </script>
 </head>
 
 
@@ -31,10 +50,26 @@
     </nav>
     <hr>
 
-    <div class = "container">
-        <div><h1>Welcome</h1></div>
-        <div><h2 style = "text-align: center;">IS 360 CSS Assignment 4</h2></div>
-    </div>
+    <form>
+        <label for = "loan">Initial Loan Amount</label>
+        <input type = "number" id = "loan">
+    </form>
+
+    <form>
+        <label for = "periods">Number of Periods</label>
+        <input type = "number" id = "periods">
+    </form>
+
+    <form>
+        <label for = "interest">Interest Rate per Year</label>
+        <input type = "number" id = "interest">
+    </form>
+
+    <button onclick="calculatePayment()">Submit</button>
+    <form>
+        <label for = "payment">Payment Amount</label>
+        <input type = "number" id = "payment" readonly></input>
+    </form>
 
     <footer>
         <img src = "images/Nevada_logo.png" alt = "">
