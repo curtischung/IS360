@@ -31,10 +31,21 @@
     </nav>
     <hr>
 
-    <div class = "container">
-        <div><h1>Welcome</h1></div>
-        <div><h2 style = "text-align: center;">IS 360 CSS Assignment 4</h2></div>
-    </div>
+    <form>
+        <label for = "investment">Initial Investment Amount</label>
+        <input type = "number" id = "investment">
+    </form>
+
+    <form>
+        <label for = "totalExpenses">Total Expenses</label>
+        <input type = "number" id = "totalExpenses">
+    </form>
+
+    <button onclick="affordable()">Submit</button>
+    <form>
+        <label for = "Affordable">Maximum Monthly Affordable Payment</label>
+        <input type = "number" id = "affordable" readonly></output>
+    </form>
 
     <footer>
         <img src = "images/Nevada_logo.png" alt = "">
