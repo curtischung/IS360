@@ -1,7 +1,9 @@
+@import "colors.css";
+
 footer {
     text-align: center;
     padding: 15px;
-    background-color: #00325e;
+    background-color: var(--deep-ocean);
     color: white;
     font-size: 13px;
 }
