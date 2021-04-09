@@ -8,6 +8,30 @@
     <link rel="stylesheet" href="css/affordpage.css">
     <title>Index</title>
 
+        
+    <script>
+        function affordable() {
+            var maxPayment = 0;
+            const grossVal = document.getElementById("gmIncome").value;
+            const expenseVal = document.getElementById("totalExpenses").value;
+
+            const calcGrossVal = .29 * parseFloat(grossVal);
+            const calcExpenseVal = .39 * (parseFloat(grossVal) - parseFloat(expenseVal));
+
+            if(calcGrossVal > calcExpenseVal)
+            {
+                maxPayment= calcExpenseVal;
+            }
+            else
+            {
+                maxPayment= calcGrossVal;
+            }
+
+            document.getElementById("affordable").value = maxPayment;
+
+        }
+    </script>
+
 </head>
 
 
@@ -35,44 +59,19 @@
 
     <form>
         <label for = "gmIncome">Gross Monthly Income</label>
-        <input type = "number" id = "gmIncome" name = "gmIncome">
+        <input type = "number" id = "gmIncome">
     </form>
 
     <form>
         <label for = "totalExpenses">Total Expenses</label>
-        <input type = "number" id = "totalExpenses" name = "totalExpenses">
+        <input type = "number" id = "totalExpenses">
     </form>
 
-    <script>
-        function affordable(gm) {
-            var maxPayment = 0;
-            //const grossVal = document.getElementById("gmIncome").value;
-            //const expenseVal = document.getElementById("totalExpenses").value;
-            const grossVal = 10;
-            const expenseVal = 10;
-
-            const calcGrossVal = .29 * parseFloat(grossVal);
-            const calcExpenseVal = .39 * (parseFloat(grossVal) - parseFloat(expenseVal));
-
-            if(calcGrossVal > calcExpenseVal)
-            {
-                maxPayment= calcExpenseVal;
-            }
-            else
-            {
-                maxPayment= calcGrossVal;
-            }
-
-            document.getElementById("affordable") = maxPayment;
-
-        }
-    </script>
-    <button type="submit">Submit</button>
+    <button onclick="affordable()">Submit</button>
     <form>
-        <label for = "Affordable">Affordable</label>
-        <output type = "number" id = "affordable" name = "affordable" aria-readonly="true"></output>
+        <label for = "Affordable">Maximum Monthly Affordable Payment</label>
+        <input type = "number" id = "affordable" readonly></output>
     </form>
-    
 
 
     <footer>
