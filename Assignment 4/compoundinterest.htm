@@ -6,6 +6,25 @@
     <link rel="stylesheet" href="css/navbar.css">
     <link rel="stylesheet" href="css/footer.css">
     <title>Index</title>
+
+    <script>
+        function calculateCompoundInterest() {
+            const investmentVal = document.getElementById("investment").value;
+            const periodVal = document.getElementById("periods").value;
+            const annualInterestVal = document.getElementById("interest").value / 100;
+
+            const interestRateVal = annualInterestVal / 12;
+            const periods = periodVal * 12;
+
+            var currentBal = parseFloat(investmentVal);
+            for(i = 0; i < periodVal; i++)
+            {
+                currentBal += currentBal * interestRateVal; 
+            }
+
+            document.getElementById("interestAmount").value = currentBal;
+        }
+    </script>
 </head>
 
 
@@ -37,14 +56,19 @@
     </form>
 
     <form>
-        <label for = "totalExpenses">Total Expenses</label>
-        <input type = "number" id = "totalExpenses">
+        <label for = "periods">Number of Periods</label>
+        <input type = "number" id = "periods">
     </form>
 
-    <button onclick="affordable()">Submit</button>
     <form>
-        <label for = "Affordable">Maximum Monthly Affordable Payment</label>
-        <input type = "number" id = "affordable" readonly></output>
+        <label for = "interest">Interest Rate per Period</label>
+        <input type = "number" id = "interest">
+    </form>
+
+    <button onclick="calculateCompoundInterest()">Submit</button>
+    <form>
+        <label for = "interestAmount">Interest Amount</label>
+        <input type = "number" id = "interestAmount" readonly></output>
     </form>
 
     <footer>
