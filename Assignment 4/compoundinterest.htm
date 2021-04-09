@@ -17,7 +17,7 @@
             const periods = periodVal * 12;
 
             var currentBal = parseFloat(investmentVal);
-            for(i = 0; i < periodVal; i++)
+            for(i = 0; i < periods; i++)
             {
                 currentBal += currentBal * interestRateVal; 
             }
@@ -68,7 +68,7 @@
     <button onclick="calculateCompoundInterest()">Submit</button>
     <form>
         <label for = "interestAmount">Interest Amount</label>
-        <input type = "number" id = "interestAmount" readonly></output>
+        <input type = "number" id = "interestAmount" readonly></input>
     </form>
 
     <footer>
