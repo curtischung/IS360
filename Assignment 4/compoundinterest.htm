@@ -6,6 +6,8 @@
     <link rel="stylesheet" href="css/navbar.css">
     <link rel="stylesheet" href="css/footer.css">
     <link rel="stylesheet" href="css/pages.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
     <title>Index</title>
 
     <script>
@@ -51,26 +53,40 @@
     </nav>
     <hr>
 
-    <form>
-        <label for = "investment">Initial Investment Amount</label>
-        <input type = "number" id = "investment">
-    </form>
+    <label for = "investment">Initial Investment Amount</label>
+    <div class= "input-icons">
+        <i class ="fa fa-usd icon"></i>
+        <form>
+            <input type = "number" id = "investment" placeholder = "Enter here...">
+        </form>
+    </div>
 
-    <form>
-        <label for = "periods">Number of Periods</label>
-        <input type = "number" id = "periods">
-    </form>
 
-    <form>
-        <label for = "interest">Interest Rate per Period</label>
-        <input type = "number" id = "interest">
-    </form>
+    <label for = "periods">Number of Periods</label>
+    <div class= "input-icons">
+        <i class ="fa fa-calender-plus-o icon" aria-hidden = "true"></i>
+        <form>
+            <input type = "number" id = "periods" placeholder = "Enter here...">
+        </form>
+    </div>
+
+    <label for = "interest">Interest Rate per Period</label>
+    <div class= "input-icons">
+        <i class ="icon">%</i>
+        <form>
+            <input type = "number" id = "interest" placeholder = "Enter here...">
+        </form>
+    </div>
 
     <button onclick="calculateCompoundInterest()">Submit</button>
-    <form>
-        <label for = "interestAmount">Interest Amount</label>
-        <input type = "number" id = "interestAmount" readonly></input>
-    </form>
+
+    <label for = "interestAmount">Interest Amount</label>
+    <div class= "input-icons">
+        <i class ="fa fa-usd icon"></i>
+        <form>
+            <input type = "number" id = "interestAmount" readonly>
+        </form>
+    </div>
 
     <footer>
         <img src = "images/Nevada_logo.png" alt = "">

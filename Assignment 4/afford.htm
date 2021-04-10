@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="css/navbar.css">
     <link rel="stylesheet" href="css/footer.css">
     <link rel="stylesheet" href="css/pages.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     
     
     <title>Index</title>
@@ -60,21 +61,31 @@
     </nav>
     <hr>
 
-    <form>
-        <label for = "gmIncome">Gross Monthly Income</label>
-        <input type = "number" id = "gmIncome">
-    </form>
+    <label for = "gmIncome">Gross Monthly Income</label>
+    <div class= "input-icons">
+        <i class ="fa fa-usd icon"></i>
+        <form>
+            <input type = "number" id = "gmIncome" placeholder = "Enter here...">
+        </form>
+    </div>
 
-    <form>
-        <label for = "totalExpenses">Total Expenses</label>
-        <input type = "number" id = "totalExpenses">
-    </form>
+    <label for = "totalExpenses">Total Expenses</label>
+    <div class= "input-icons">
+        <i class ="fa fa-usd icon"></i>
+        <form>
+            <input type = "number" id = "totalExpenses" placeholder = "Enter here...">
+        </form>
+    </div>
 
     <button onclick="affordable()">Submit</button>
-    <form>
-        <label for = "Affordable">Maximum Monthly Affordable Payment</label>
-        <input type = "number" id = "affordable" readonly></input>
-    </form>
+
+    <label for = "Affordable">Maximum Affordable Monthly Payment</label>
+    <div class= "input-icons">
+        <i class ="fa fa-usd icon"></i>
+        <form>
+            <input type = "number" id = "Affordable" readonly>
+        </form>
+    </div>
 
 
     <footer>
