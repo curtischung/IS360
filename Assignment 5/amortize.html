@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="css/pages.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+    <title>Index</title>
+
+    <script>
+        function calculatePayment() {
+            const loanVal = document.getElementById("loan").value;
+            const periodVal = document.getElementById("periods").value;
+            const annualInterestVal = document.getElementById("interest").value / 100;
+
+            const periods = periodVal * 12;
+            const ratePerPeriod = annualInterestVal / 12
+
+            var currentloan = parseFloat("loanVal");
+            let payment = (loanVal * ratePerPeriod) / (1 - Math.pow((1 + ratePerPeriod), (periods * -1)));
+
+            payment = payment.toFixed(2);
+
+            document.getElementById("payment").value = payment;
+        }
+
+    </script>
+</head>
+
+
+<body>
+    <hr>
+    <nav aria-label = "Pages">
+        <table class = "menu">
+        <tr class = "navbar">
+            <td class = "active-page"> 
+                <a href="index.html">Index</a>
+            </td>
+            <td>
+                <a href="amortize.html">Amortize</a>
+            </td>
+            <td>
+                <a href="futurevalue.html">Future Value</a>
+            </td>
+        </tr>
+        </table>
+    </nav>
+    <hr>
+
+    <label for = "loan">Initial Loan Amount</label>
+    <div class= "input-icons">
+        <i class ="fa fa-usd icon"></i>
+        <form>
+            <input type = "number" id = "loan" placeholder = "Enter here...">
+        </form>
+    </div>
+
+    <label for = "periods">Number of Periods</label>
+    <div class= "input-icons">
+        <i class ="fa fa-calender-plus-o icon" aria-hidden = "true"></i>
+        <form>
+            <input type = "number" id = "periods" placeholder = "Enter here...">
+        </form>
+    </div>
+
+    <label for = "interest">Interest Rate per Year</label>
+    <div class= "input-icons">
+        <i class ="icon">%</i>
+        <form>
+            <input type = "number" id = "interest" placeholder = "Enter here...">
+        </form>
+    </div>
+
+    <button onclick="calculatePayment()">Submit</button>
+
+    <label for = "payment">Payment Amount per Month</label>
+    <div class= "input-icons">
+        <i class ="fa fa-usd icon"></i>
+        <form>
+            <input type = "number" id = "payment" readonly>
+        </form>
+    </div>
+
+    <footer>
+        <img src = "images/Nevada_logo.png" alt = "">
+        <p>&#169; 2020 Curtis Chung</p>
+    </footer>
+</body>
+
+</html>
