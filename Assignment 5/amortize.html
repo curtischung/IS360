@@ -3,12 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/navbar.css">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
     <link rel="stylesheet" href="css/footer.css">
     <link rel="stylesheet" href="css/pages.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     
-    <title>Index</title>
+
+    <title>Amortize</title>
 
     <script>
         function calculatePayment() {
@@ -23,8 +28,41 @@
             let payment = (loanVal * ratePerPeriod) / (1 - Math.pow((1 + ratePerPeriod), (periods * -1)));
 
             payment = payment.toFixed(2);
+            
 
             document.getElementById("payment").value = payment;
+
+            fillTable(loanVal, periods, annualInterestVal, payment);
+        }
+
+        function fillTable(loanVal, periodVal, annualInterestVal, payment) {
+
+            let tableRef = document.getElementById("output")
+
+            var monthlyInterest = annualInterestVal / 12;
+
+
+            for(i = 0; i < periodVal; i++)
+            {
+                var row = tableRef.insertRow(-1);
+
+                var currentInterest = monthlyInterest * loanVal;
+                var principal = (currentInterest - payment) * -1;
+                var newBalance = loanVal - principal;
+                
+                principial = principal.toFixed(2)
+
+
+                row.insertCell(0).appendChild(document.createTextNode('$' + loanVal));
+                row.insertCell(1).appendChild(document.createTextNode('$' + payment));
+                row.insertCell(2).appendChild(document.createTextNode('$' + currentInterest.toFixed(2)));
+                row.insertCell(3).appendChild(document.createTextNode('$' + principal.toFixed(2)));
+                row.insertCell(4).appendChild(document.createTextNode('$' + newBalance.toFixed(2)));
+                row.insertCell(5).appendChild(document.createTextNode(i + 1));
+
+                loanVal -= principal;
+            }
+
         }
 
     </script>
@@ -33,57 +71,82 @@
 
 <body>
     <hr>
-    <nav aria-label = "Pages">
-        <table class = "menu">
-        <tr class = "navbar">
-            <td class = "active-page"> 
-                <a href="index.html">Index</a>
-            </td>
-            <td>
-                <a href="amortize.html">Amortize</a>
-            </td>
-            <td>
-                <a href="futurevalue.html">Future Value</a>
-            </td>
-        </tr>
-        </table>
-    </nav>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">Welcome to IS 360 Assignment 5</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="amortize.html">Amortize</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="futurevalue.html">Future Value</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
     <hr>
 
-    <label for = "loan">Initial Loan Amount</label>
-    <div class= "input-icons">
-        <i class ="fa fa-usd icon"></i>
-        <form>
-            <input type = "number" id = "loan" placeholder = "Enter here...">
-        </form>
+    <div class = "container">
+        <div class = "row justify-content-around">
+            <div class = "col">
+                <label for = "loan">Initial Loan Amount</label>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <button class="btn btn-outline-secondary" type="button">$</button>
+                    </div>
+                    <input type="number" class="form-control" placeholder="Enter here..." id = "loan" aria-label="" aria-describedby="basic-addon1">
+                </div>
+            
+                <label for = "interest">Interest Rate per Year</label>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <button class="btn btn-outline-secondary" type="button">$</button>
+                    </div>
+                    <input type="number" class="form-control" placeholder="Enter here..." id = "interest" aria-label="" aria-describedby="basic-addon1">
+                </div>
+            
+                <label for = "periods">Loan Term (Years)</label>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                    </div>
+                    <input type="number" class="form-control" placeholder="Enter here..." id = "periods" aria-label="" aria-describedby="basic-addon1">
+                </div>
+            
+                <button type="button" class="btn btn-primary btn-sm" onclick= "calculatePayment()">Generate Table</button>
+            
+                <label for = "payment">Payment Amount per Month</label>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <button class="btn btn-outline-secondary" type="button">$</button>
+                    </div>
+                    <input type="number" class="form-control" placeholder="Enter here..." id = "payment" aria-label="" aria-describedby="basic-addon1">
+                </div>
+            </div>
+            <div class = "col">
+                <table class = "table table-bordered" id = "output">
+                    <thead class = "thead-dark">
+                        <tr>
+                            <th>Beg. Balance</th>
+                            <th>Payment</th>
+                            <th>Interest</th>
+                            <th>Principal</th>
+                            <th>Balance</th>
+                            <th>Period</th>
+                        </tr>
+                    </thead>
+                </table> 
+            </div>
+        </div>
+
     </div>
-
-    <label for = "periods">Number of Periods</label>
-    <div class= "input-icons">
-        <i class ="fa fa-calender-plus-o icon" aria-hidden = "true"></i>
-        <form>
-            <input type = "number" id = "periods" placeholder = "Enter here...">
-        </form>
-    </div>
-
-    <label for = "interest">Interest Rate per Year</label>
-    <div class= "input-icons">
-        <i class ="icon">%</i>
-        <form>
-            <input type = "number" id = "interest" placeholder = "Enter here...">
-        </form>
-    </div>
-
-    <button onclick="calculatePayment()">Submit</button>
-
-    <label for = "payment">Payment Amount per Month</label>
-    <div class= "input-icons">
-        <i class ="fa fa-usd icon"></i>
-        <form>
-            <input type = "number" id = "payment" readonly>
-        </form>
-    </div>
-
+   
+    
     <footer>
         <img src = "images/Nevada_logo.png" alt = "">
         <p>&#169; 2020 Curtis Chung</p>
