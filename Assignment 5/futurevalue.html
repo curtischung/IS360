@@ -13,6 +13,15 @@
     <link rel="stylesheet" href="css/footer.css">
     <link rel="stylesheet" href="css/pages.css">
     <title>Index</title>
+
+    <script>
+      function calcFutureValue() {
+
+      }
+      function fillTable() {
+
+      }
+    </script>
 </head>
 
 
@@ -39,35 +48,59 @@
       </nav>
     <hr>
 
-    <label for = "investment">Initial Investment</label>
-    <div class= "input-icons">
-        <i class ="icon">$</i>
-        <form>
-            <input type = "number" id = "investment" placeholder = "Enter here...">
-        </form>
-    </div>
+    <div class = "container">
+      <div class = "row justify-content-around">
+          <div class = "col">
+              <label for = "Investment">Initial Investment</label>
+              <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <button class="btn btn-outline-secondary" type="button">$</button>
+                  </div>
+                  <input type="number" class="form-control" placeholder="Enter here..." id = "investment" aria-label="" aria-describedby="basic-addon1">
+              </div>
+          
+              <label for = "deposit">Monthly Deposit</label>
+              <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <button class="btn btn-outline-secondary" type="button">$</button>
+                  </div>
+                  <input type="number" class="form-control" placeholder="Enter here..." id = "deposit" aria-label="" aria-describedby="basic-addon1">
+              </div>
+          
+              <label for = "interest">Annual Interest Rate</label>
+              <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                  </div>
+                  <input type="number" class="form-control" placeholder="Enter here..." id = "periods" aria-label="" aria-describedby="basic-addon1">
+              </div>
+          
+              <button type="button" class="btn btn-primary btn-sm" onclick= "calculatePayment()">Generate Table</button>
+          
+              <label for = "term">Investment Term (Years)</label>
+              <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <button class="btn btn-outline-secondary" type="button">$</button>
+                  </div>
+                  <input type="number" class="form-control" placeholder="Enter here..." id = "term" aria-label="" aria-describedby="basic-addon1">
+              </div>
+          </div>
+          <div class = "col">
+              <table class = "table table-bordered" id = "output">
+                  <thead class = "thead-dark">
+                      <tr>
+                          <th>Beg. Balance</th>
+                          <th>Payment</th>
+                          <th>Interest</th>
+                          <th>Principal</th>
+                          <th>Balance</th>
+                          <th>Period</th>
+                      </tr>
+                  </thead>
+              </table> 
+          </div>
+      </div>
 
-    <label for = "deposit">Monthly Deposit Amount</label>
-    <div class= "input-icons">
-        <i class ="icon">%</i>
-        <form>
-            <input type = "number" id = "deposit" placeholder = "Enter here...">
-        </form>
-    </div>
-
-    <label for = "interest">Annual Interest Rate</label>
-    <div class= "input-icons">
-        <form>
-            <input type = "number" id = "investment" placeholder = "Enter here...">
-        </form>
-    </div>
-
-    <label for = "term">Investment Term (Years)</label>
-    <div class= "input-icons">
-        <form>
-            <input type = "number" id = "term" placeholder = "Enter here...">
-        </form>
-    </div>
+  </div>
 
     <footer>
         <img src = "images/Nevada_logo.png" alt = "">
