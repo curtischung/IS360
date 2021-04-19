@@ -32,12 +32,14 @@
 
             document.getElementById("payment").value = payment;
 
+
+            resetTable();
             fillTable(loanVal, periods, annualInterestVal, payment);
         }
 
         function fillTable(loanVal, periodVal, annualInterestVal, payment) {
 
-            let tableRef = document.getElementById("output")
+            let tableRef = document.getElementById("output-body");
 
             var monthlyInterest = annualInterestVal / 12;
 
@@ -53,7 +55,7 @@
                 principial = principal.toFixed(2)
 
 
-                row.insertCell(0).appendChild(document.createTextNode('$' + loanVal));
+                row.insertCell(0).appendChild(document.createTextNode('$' + (Number(loanVal).toFixed(2))));
                 row.insertCell(1).appendChild(document.createTextNode('$' + payment));
                 row.insertCell(2).appendChild(document.createTextNode('$' + currentInterest.toFixed(2)));
                 row.insertCell(3).appendChild(document.createTextNode('$' + principal.toFixed(2)));
@@ -63,6 +65,10 @@
                 loanVal -= principal;
             }
 
+        }
+
+        function resetTable() {
+          $("#output tbody tr").remove();
         }
 
     </script>
@@ -139,6 +145,8 @@
                             <th>Balance</th>
                             <th>Period</th>
                         </tr>
+                        <tbody id = "output-body">
+                        </tbody>
                     </thead>
                 </table> 
             </div>
