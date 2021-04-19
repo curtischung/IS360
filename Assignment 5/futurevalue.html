@@ -12,14 +12,49 @@
     <link rel="stylesheet" href="css/navbar.css">
     <link rel="stylesheet" href="css/footer.css">
     <link rel="stylesheet" href="css/pages.css">
-    <title>Index</title>
+    <title>Future Value</title>
 
     <script>
       function calcFutureValue() {
+        const investmentVal = document.getElementById("investment").value;
+        const depositVal = document.getElementById("deposit").value;
+        const annualInterestVal = document.getElementById("interest").value / 100;
+        const periodVal = document.getElementById("period").value;
+
+        const periods = periodVal * 12;
+
+        resetTable();
+        fillTable(investmentVal, depositVal, annualInterestVal, periods);
 
       }
-      function fillTable() {
+      function fillTable(investmentVal, depositVal, annualInterestVal, periodVal) {
+        let tableRef = document.getElementById("output-body");
+        
+        var monthlyInterest = annualInterestVal / 12;
+        console.log(monthlyInterest);
+        console.log(annualInterestVal);
 
+
+        for(i = 0; i < periodVal; i++)
+        {
+          var row = tableRef.insertRow(-1);
+
+          var currentInterest = investmentVal * monthlyInterest;
+          var newBalance = Number(investmentVal) + Number(currentInterest);
+
+          row.insertCell(0).appendChild(document.createTextNode(i + 1));
+                row.insertCell(1).appendChild(document.createTextNode('$' + (Number(investmentVal)).toFixed(2)));
+                row.insertCell(2).appendChild(document.createTextNode('$' + depositVal));
+                row.insertCell(3).appendChild(document.createTextNode('$' + currentInterest.toFixed(2)));
+                row.insertCell(4).appendChild(document.createTextNode('$' + (Number(newBalance)).toFixed(2)));
+
+          investmentVal = Number(investmentVal) + Number(currentInterest);
+        }
+
+      }
+
+      function resetTable() {
+        $("#output tbody tr").remove();
       }
     </script>
 </head>
@@ -71,31 +106,32 @@
               <div class="input-group mb-3">
                   <div class="input-group-prepend">
                   </div>
-                  <input type="number" class="form-control" placeholder="Enter here..." id = "periods" aria-label="" aria-describedby="basic-addon1">
+                  <input type="number" class="form-control" placeholder="Enter here..." id = "interest" aria-label="" aria-describedby="basic-addon1">
               </div>
           
-              <button type="button" class="btn btn-primary btn-sm" onclick= "calculatePayment()">Generate Table</button>
-          
-              <label for = "term">Investment Term (Years)</label>
+              <label for = "period">Investment Term (Years)</label>
               <div class="input-group mb-3">
                   <div class="input-group-prepend">
                     <button class="btn btn-outline-secondary" type="button">$</button>
                   </div>
-                  <input type="number" class="form-control" placeholder="Enter here..." id = "term" aria-label="" aria-describedby="basic-addon1">
+                  <input type="number" class="form-control" placeholder="Enter here..." id = "period" aria-label="" aria-describedby="basic-addon1">
               </div>
+
+              <button type="button" class="btn btn-primary btn-sm" onclick= "calcFutureValue()">Generate Table</button>
           </div>
           <div class = "col">
               <table class = "table table-bordered" id = "output">
                   <thead class = "thead-dark">
                       <tr>
-                          <th>Beg. Balance</th>
-                          <th>Payment</th>
-                          <th>Interest</th>
-                          <th>Principal</th>
-                          <th>Balance</th>
                           <th>Period</th>
+                          <th>Beg. Balance</th>
+                          <th>Recurring Deposit</th>
+                          <th>Interest</th>
+                          <th>New Balance</th>
                       </tr>
                   </thead>
+                  <tbody id = "output-body">
+                  </tbody>
               </table> 
           </div>
       </div>
