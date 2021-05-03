@@ -1,0 +1,16 @@
+@import "colors.css";
+
+footer {
+    text-align: center;
+    padding: 15px;
+    background-color: var(--deep-ocean);
+    color: white;
+    font-size: 13px;
+}
+
+footer img {
+    float: left;
+    width: 73px;
+    height: 50px;
+    text-align: left;
+}

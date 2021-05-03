@@ -1,0 +1,37 @@
+body {
+    background-color: var(--bone-gray);
+}
+
+label {
+    display: table;
+    flex-direction: row;
+    justify-content: flex-end;
+    text-align: left;
+    width: 350px;
+    line-height: 26px;
+    margin-bottom: 10px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.table {
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+button {
+    margin-bottom: 4px;
+    margin-left: 4px;
+}
+
+label {
+    margin-left: 4px;
+}
+table.table-bordered{
+    border:1px solid blue;
+  }
+  
+table.table-bordered > thead > tr > th{
+    border:1px solid blue;
+}

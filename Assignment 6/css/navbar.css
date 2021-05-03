@@ -1,0 +1,26 @@
+@import "colors.css";
+
+#menu {
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid black;
+    width: 500px;
+    height: 50px;
+    text-align: center;
+    background-color: var(--sky-blue);
+}
+
+.navbar td{
+    width:600px;
+    text-align: center;
+    box-shadow: var(--blue-shadow) 0px 0px 0px 2px;
+    z-index:1;
+}
+
+.navbar a{
+    display: block;
+    padding: 10px; 
+}
+.navbar td:hover {
+    background-color: var(--bone-gray);
+}

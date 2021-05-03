@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="css/pages.css">
+    <title>Index</title>
+
+    <script>
+            function btnNWSGetStationsAsync_Click() {
+            var base_uri = "https://w1.weather.gov/xml/current_obs/index.xml";
+            req = new XMLHttpRequest();
+            req.open("GET", base_uri, true);
+            req.setRequestHeader("Accept", "text / html, application / xhtml + xml, application / xml; q = 0.9,*/*;q=0.8");
+            // Register the callback procedure. In other examples, I have used an anonomyous
+            // function. As the functions get longer, the anonymous functions get hard to read.
+            // I prefer a declared callback method.
+            req.onreadystatechange = GetStationRawAjaxCallback;
+            req.send();
+
+        }
+
+        // This is the callback method for btnNWSGetStationsAsync_Click.
+        function GetStationRawAjaxCallback() {
+            // Check that the request has completed and the status is OK.
+            if (this.readyState == 4 && this.status == 200) {
+                // The output widget to display the results.
+                var txtOutput;
+                txtOutput = document.getElementById("txtXMLAsText");
+
+                // MyXML contains the parsed XML response.
+                var MyXML = req.responseXML;
+
+                // Placeholder <div> tag with which to attach the output.
+                var divStationsPlaceholder;
+                divStationsPlaceholder = document.getElementById("divStationsPlaceholder");
+
+                // There is one element in the returned XML named <credit>. Get the nodes value.
+                // We are calling getElementsByTagName on the returned XML, rather than the
+                // DOM object for our XML.
+                // There is one <credit> node so credit[0] gets the first element from the
+                // node list.
+                var credit = MyXML.getElementsByTagName("credit");
+                divStationsPlaceholder.innerHTML = credit[0].innerHTML;
+
+                // Create the unordered list.
+                var uList = document.createElement("ul");
+
+                var stations = MyXML.getElementsByTagName("station");
+                for (x = 0; x < stations.length; x++) {
+
+                    // Get the current station.
+                    var stationid = stations[x].getElementsByTagName("station_id")[0].innerHTML;
+                    var state = stations[x].getElementsByTagName("state")[0].innerHTML;
+                    var station_name = stations[x].getElementsByTagName("station_name")[0].innerHTML;
+
+                    var listItem = stationid + " (" + state + ") - " + station_name;
+                    var liCurrent = document.createElement("li");
+                    liCurrent.appendChild(document.createTextNode(listItem));
+
+                    // Append the list item <li> to the unorder list <ul>
+                    uList.appendChild(liCurrent);
+                }
+
+                divStationsPlaceholder.appendChild(uList);
+            }
+        }
+      
+        function getUserState() {
+          
+        }
+        function fillTable(station, stationID) {
+
+            let tableRef = document.getElementById("output-body");
+
+            for(i = 0; i < periodVal; i++)
+            {
+                row.insertCell(0).appendChild(document.createTextNode(station));
+                row.insertCell(1).appendChild(document.createTextNode(stationID));
+
+            }
+
+        }
+
+        function resetTable() {
+          $("#output tbody tr").remove();
+        }
+
+    </script>
+</head>
+
+
+<body>
+    <hr>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">Welcome to IS 360 Assignment 5</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item active">
+              <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="weatherstations.html">Weather Stations</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    <hr>
+
+    <table class = "table table-bordered" id = "output">
+      <thead class = "thead-dark">
+          <tr>
+              <th>Beg. Balance</th>
+              <th>Payment</th>
+              <th>Interest</th>
+              <th>Principal</th>
+              <th>Balance</th>
+              <th>Period</th>
+          </tr>
+          <tbody id = "output-body">
+          </tbody>
+      </thead>
+  </table> 
+
+    <footer>
+        <img src = "images/Nevada_logo.png" alt = "">
+        <p>&#169; 2020 Curtis Chung</p>
+    </footer>
+</body>
+
+</html>
