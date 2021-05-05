@@ -15,24 +15,31 @@
     <title>Index</title>
 
     <script>
-            function btnNWSGetStationsAsync_Click() {
-            var base_uri = "https://w1.weather.gov/xml/current_obs/index.xml";
-            req = new XMLHttpRequest();
-            req.open("GET", base_uri, true);
-            req.setRequestHeader("Accept", "text / html, application / xhtml + xml, application / xml; q = 0.9,*/*;q=0.8");
-            // Register the callback procedure. In other examples, I have used an anonomyous
-            // function. As the functions get longer, the anonymous functions get hard to read.
-            // I prefer a declared callback method.
-            req.onreadystatechange = GetStationRawAjaxCallback;
-            req.send();
+            var req = XMLHttpRequest;
+
+            function reqListener () {
+              console.log(this.responseText);
+            }
+            
+            function btnNWSGetStationsAsync_Click(filter) {
+
+              var base_uri = "https://w1.weather.gov/xml/current_obs/index.xml";
+              req = new XMLHttpRequest();
+              req.addEventListener("load", reqListener);
+              req.open("GET", base_uri, true);
+              //req.setRequestHeader("token", "vczOaCmkCxBVQHkKGXeVcGoNcrzjdBab")
+              req.setRequestHeader("Accept", "text / html, application / xhtml + xml, application / xml; q = 0.9,*/*;q=0.8");
+              req.onreadystatechange = GetStationRawAjaxCallback(filter);
+              req.send();
+
 
         }
 
         // This is the callback method for btnNWSGetStationsAsync_Click.
-        function GetStationRawAjaxCallback() {
+        function GetStationRawAjaxCallback(filter) {
             // Check that the request has completed and the status is OK.
+            console.log(this.readystate + " " + this.status);
             if (this.readyState == 4 && this.status == 200) {
-                // The output widget to display the results.
                 var txtOutput;
                 txtOutput = document.getElementById("txtXMLAsText");
 
@@ -51,8 +58,6 @@
                 var credit = MyXML.getElementsByTagName("credit");
                 divStationsPlaceholder.innerHTML = credit[0].innerHTML;
 
-                // Create the unordered list.
-                var uList = document.createElement("ul");
 
                 var stations = MyXML.getElementsByTagName("station");
                 for (x = 0; x < stations.length; x++) {
@@ -62,32 +67,19 @@
                     var state = stations[x].getElementsByTagName("state")[0].innerHTML;
                     var station_name = stations[x].getElementsByTagName("station_name")[0].innerHTML;
 
-                    var listItem = stationid + " (" + state + ") - " + station_name;
-                    var liCurrent = document.createElement("li");
-                    liCurrent.appendChild(document.createTextNode(listItem));
+                    let tableRef = document.getElementById("output-body");
+                    console.log(state);
 
-                    // Append the list item <li> to the unorder list <ul>
-                    uList.appendChild(liCurrent);
+                    if(state == filter)
+                    {
+                      row.insertCell(0).appendChild(document.createTextNode(station));
+                      row.insertCell(1).appendChild(document.createTextNode(stationID));
+                    }
+
                 }
 
                 divStationsPlaceholder.appendChild(uList);
             }
-        }
-      
-        function getUserState() {
-
-        }
-        function fillTable(station, stationID) {
-
-            let tableRef = document.getElementById("output-body");
-
-            for(i = 0; i < periodVal; i++)
-            {
-                row.insertCell(0).appendChild(document.createTextNode(station));
-                row.insertCell(1).appendChild(document.createTextNode(stationID));
-
-            }
-
         }
 
         function resetTable() {
@@ -122,8 +114,10 @@
       <div class = "row justify-content-around">
         <div class = "col">
           <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="Enter here..." id = "state" aria-label="" aria-describedby="basic-addon1">
-        </div>
+            <label for = "stateFilter">What state would you like to view?</label>
+              <input type="text" class="form-control" placeholder="Enter here..." id = "stateFilter" aria-label="" aria-describedby="basic-addon1">
+          </div>
+          <button type="button" class="btn btn-primary btn-sm" onclick= "btnNWSGetStationsAsync_Click(stateFilter)">Generate Table</button>
         </div>
         <div class = "col">
           <table class = "table table-bordered" id = "output">
