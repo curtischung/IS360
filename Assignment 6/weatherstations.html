@@ -25,7 +25,7 @@
 
               var base_uri = "https://w1.weather.gov/xml/current_obs/index.xml";
               req = new XMLHttpRequest();
-              req.addEventListener("load", reqListener);
+              //req.addEventListener("load", reqListener);
               req.open("GET", base_uri, true);
               //req.setRequestHeader("token", "vczOaCmkCxBVQHkKGXeVcGoNcrzjdBab")
               req.setRequestHeader("Accept", "text / html, application / xhtml + xml, application / xml; q = 0.9,*/*;q=0.8");
@@ -39,7 +39,7 @@
         function GetStationRawAjaxCallback(filter) {
             // Check that the request has completed and the status is OK.
             console.log(this.readystate + " " + this.status);
-            if (this.readyState == 4 && this.status == 200) {
+            //if (this.readyState == 4 && this.status == 200) {
                 var txtOutput;
                 txtOutput = document.getElementById("txtXMLAsText");
 
@@ -47,19 +47,20 @@
                 var MyXML = req.responseXML;
 
                 // Placeholder <div> tag with which to attach the output.
-                var divStationsPlaceholder;
-                divStationsPlaceholder = document.getElementById("divStationsPlaceholder");
+                // var divStationsPlaceholder;
+                // divStationsPlaceholder = document.getElementById("divStationsPlaceholder");
 
                 // There is one element in the returned XML named <credit>. Get the nodes value.
                 // We are calling getElementsByTagName on the returned XML, rather than the
                 // DOM object for our XML.
                 // There is one <credit> node so credit[0] gets the first element from the
                 // node list.
-                var credit = MyXML.getElementsByTagName("credit");
-                divStationsPlaceholder.innerHTML = credit[0].innerHTML;
+                // var credit = MyXML.getElementsByTagName("credit");
+                // divStationsPlaceholder.innerHTML = credit[0].innerHTML;
 
 
                 var stations = MyXML.getElementsByTagName("station");
+                console.log(stations);
                 for (x = 0; x < stations.length; x++) {
 
                     // Get the current station.
@@ -80,7 +81,7 @@
 
                 divStationsPlaceholder.appendChild(uList);
             }
-        }
+        //}
 
         function resetTable() {
           $("#output tbody tr").remove();
