@@ -27,9 +27,8 @@
               req = new XMLHttpRequest();
               //req.addEventListener("load", reqListener);
               req.open("GET", base_uri, true);
-              //req.setRequestHeader("token", "vczOaCmkCxBVQHkKGXeVcGoNcrzjdBab")
               req.setRequestHeader("Accept", "text / html, application / xhtml + xml, application / xml; q = 0.9,*/*;q=0.8");
-              req.onreadystatechange = GetStationRawAjaxCallback(filter);
+              req.onreadystatechange = GetStationRawAjaxCallback;
               req.send();
 
 
@@ -38,50 +37,35 @@
         // This is the callback method for btnNWSGetStationsAsync_Click.
         function GetStationRawAjaxCallback(filter) {
             // Check that the request has completed and the status is OK.
-            console.log(this.readystate + " " + this.status);
-            //if (this.readyState == 4 && this.status == 200) {
-                var txtOutput;
-                txtOutput = document.getElementById("txtXMLAsText");
+            //console.log(filter);
+
+            if (req.readyState == 4 && req.status == 200) {
 
                 // MyXML contains the parsed XML response.
                 var MyXML = req.responseXML;
-
-                // Placeholder <div> tag with which to attach the output.
-                // var divStationsPlaceholder;
-                // divStationsPlaceholder = document.getElementById("divStationsPlaceholder");
-
-                // There is one element in the returned XML named <credit>. Get the nodes value.
-                // We are calling getElementsByTagName on the returned XML, rather than the
-                // DOM object for our XML.
-                // There is one <credit> node so credit[0] gets the first element from the
-                // node list.
-                // var credit = MyXML.getElementsByTagName("credit");
-                // divStationsPlaceholder.innerHTML = credit[0].innerHTML;
-
-
                 var stations = MyXML.getElementsByTagName("station");
-                console.log(stations);
+                resetTable();
                 for (x = 0; x < stations.length; x++) {
 
+                  
                     // Get the current station.
                     var stationid = stations[x].getElementsByTagName("station_id")[0].innerHTML;
                     var state = stations[x].getElementsByTagName("state")[0].innerHTML;
                     var station_name = stations[x].getElementsByTagName("station_name")[0].innerHTML;
 
                     let tableRef = document.getElementById("output-body");
-                    console.log(state);
+                    var row = tableRef.insertRow(-1);
 
-                    if(state == filter)
+                    if(state == filter())
                     {
-                      row.insertCell(0).appendChild(document.createTextNode(station));
-                      row.insertCell(1).appendChild(document.createTextNode(stationID));
+                      row.insertCell(0).appendChild(document.createTextNode(state));
+                      row.insertCell(1).appendChild(document.createTextNode(stationid));
+                      row.insertCell(2).appendChild(document.createTextNode(station_name));
                     }
 
                 }
-
-                divStationsPlaceholder.appendChild(uList);
             }
-        //}
+        }
 
         function resetTable() {
           $("#output tbody tr").remove();
@@ -116,7 +100,7 @@
         <div class = "col">
           <div class="input-group mb-3">
             <label for = "stateFilter">What state would you like to view?</label>
-              <input type="text" class="form-control" placeholder="Enter here..." id = "stateFilter" aria-label="" aria-describedby="basic-addon1">
+              <input type="text" class="form-control" placeholder="EX: NV" id = "stateFilter" aria-label="" aria-describedby="basic-addon1">
           </div>
           <button type="button" class="btn btn-primary btn-sm" onclick= "btnNWSGetStationsAsync_Click(stateFilter)">Generate Table</button>
         </div>
@@ -126,6 +110,7 @@
                 <tr>
                     <th>State</th>
                     <th>Station ID</th>
+                    <th>Station Name</th>
                 </tr>
                 <tbody id = "output-body">
                 </tbody>
